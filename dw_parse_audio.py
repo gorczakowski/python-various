@@ -1,8 +1,13 @@
+# This scraper program parses given DW website and downloads all audio files
+
 import time
 import requests
 from requests_html import HTMLSession
 
-address = 'https://learngerman.dw.com/en/eine-pizza-bitte/l-37279261/lv'
+# Example URL for testing
+# address = 'https://learngerman.dw.com/en/eine-pizza-bitte/l-37279261/lv'
+print('Input site URL: ')
+address = input()
 
 session = HTMLSession()
 r = session.get(address)
