@@ -5,9 +5,10 @@ import requests
 from requests_html import HTMLSession
 
 # Example URL for testing
-# address = 'https://learngerman.dw.com/en/eine-pizza-bitte/l-37279261/lv'
-print('Input site URL: ')
-address = input()
+address = 'https://learngerman.dw.com/en/eine-pizza-bitte/l-37279261/lv'
+
+# print('Input site URL: ')
+# address = input()
 
 session = HTMLSession()
 r = session.get(address)
@@ -16,18 +17,16 @@ sources = [el.find('source')[0] for el in audios]
 links = [el.attrs['src'] for el in sources]
 
 length = len(links)
-i = 0
 
-for link in links:
-    i += 1
-    file_name = link.split('/')[-1]
+for i in range(length):
+    file_name = links[i].split('/')[-1]
 
-    r = requests.get(link, stream=True)
+    r = requests.get(links[i], stream=True)
 
     with open('./Downloads/' + file_name, 'wb') as f:
         f.write(r.content)
 
-    print(f'{i}/{length}')
+    print(f'{i+1}/{length}')
     print(file_name)
     print(r.headers['content-type'], '/ Encoding:', r.encoding, '/ Status:', r.status_code)
     print()
