@@ -7,8 +7,7 @@ from requests_html import HTMLSession
 # Example URL for testing
 address = 'https://learngerman.dw.com/en/eine-pizza-bitte/l-37279261/lv'
 
-# print('Input site URL: ')
-# address = input()
+# address = input('Input site URL: \n')
 
 session = HTMLSession()
 r = session.get(address)
